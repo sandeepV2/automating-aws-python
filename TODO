@@ -1,0 +1,27 @@
+Attaching and verifying EBS volume to the existing instance. 
+
+Create a new volume (It has to be in the same availability zone as the instance to which you are attaching).
+Attach a volume to ec2-instance (Note volume will be renamed separetly on kernel of ec2-istance)
+
+Verification On ec2-instance:
+$ lsblk (will list all the volumes)
+
+check if the added device is empty
+$ sudo file -s /dev/xdvf
+If the above command output shows “/dev/xvdf: data”, it means your volume is empty.
+
+Check file system of existing volume.
+[ec2-user@ip-10-33-174-205 ~]$ mount | grep "^/dev"
+/dev/xvda2 on / type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+
+Format the new volume 
+$ sudo mkfs -t xfs /dev/xvdf
+
+Mount the volume to required directory(here it is root)
+$sudo mount /dev/xvdf /
+
+Note:
+By default on every reboot the  EBS volumes other than root volume will get unmounted. 
+To enable automount, you need to make an entry in the /etc/fstab file.
+In the format (device_name mount_point file_system_type fs_mntops fs_freq fs_passno)
+
