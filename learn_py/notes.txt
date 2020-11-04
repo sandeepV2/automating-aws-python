@@ -1,0 +1,21 @@
+
+AWS well architectures frameworks.
+https://aws.amazon.com/architecture/well-architected/?wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc
+White paper : https://docs.aws.amazon.com/wellarchitected/latest/serverless-applications-lens/introduction.html
+
+
+AWS service limits.
+(Service limits apply to each region and customer account):
+https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html
+
+Shared account responsibility to own and cleanup after use.
+
+
+Serveless architecture:
+-> No VPCs, no Azs, subnets
+
+Protecting info not present in VPCs
+-> IAM roles
+-> Granular IAM policies
+
+
